@@ -2,18 +2,26 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import Flag from "./Flag";
 import Cronometro from "./Cronometro";
+import listaRecordes from "./Recordes";
 
 
 const Header = (props) => {
     const [reset, setReset] = useState(false);
+    const [recordes, setRecordes] = useState([]);
 
-    
     const handleNewGame = () => {
-        setReset((prevReset) => !prevReset);
+        setReset(true)
+        setTimeout(() => {
+            setReset(false)
+        }, 100)
         props.onNewGame();
-
     };
+   
+    const adicionarRecorde = (recorde) => {
+          setRecordes([...recordes, recorde]);
+        };
     
+
     return (
         <View style={styles.container}>
             <View style={styles.flagContainer}>
@@ -23,6 +31,9 @@ const Header = (props) => {
                     </TouchableOpacity>
                     <Text style={styles.flagsLeft}>= {props.flagsLeft}</Text>
             </View>
+            <TouchableOpacity style={styles.button} onPress={props.onRecordes}>
+                <Text style={styles.buttonLabel}>Recordes</Text>
+            </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={handleNewGame}>
                 <Text style={styles.buttonLabel}>Novo Jogo</Text>
                 <Cronometro reset={reset}/>

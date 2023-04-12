@@ -38,12 +38,6 @@ const Cronometro = (props) => {
     }
   }, [minutos, reset]);
 
-  // useEffect(() => {
-  //   if (horas > 0 || minutos > 0 || segundos > 0) {
-  //     setReset(false);
-  //   }
-  // }, [horas, minutos, segundos]);
-
   const totalSegundos = horas * 3600 + minutos * 60 + segundos;
   const tempoFormatado = new Date(totalSegundos * 1000).toISOString().substr(11, 8);
 

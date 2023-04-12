@@ -50,11 +50,11 @@ export default class App extends Component {
 
     if (lost) {
       showMines(board)
-      Alert.alert('Perdeu', 'Mó otário')
+      Alert.alert('Perdeu', 'Selecione "Novo Jogo" para iniciar uma nova partida')
     }
 
     if (won) {
-      Alert.alert('Parabéns', 'Você conseguiu ganhar algo na vida!')
+      Alert.alert('Parabéns, você venceu!', 'Selecione "Novo Jogo" para iniciar uma nova partida')
     }
     
     this.setState ({ board, lost, won })
@@ -66,7 +66,7 @@ export default class App extends Component {
     const won = wonGame(board)
 
     if (won) {
-      Alert.alert('Parabéns', 'Você conseguiu ganhar algo na vida!')
+      Alert.alert('Parabéns, você venceu!', 'Selecione "Novo Jogo" para iniciar uma nova partida')
     }
 
     this.setState({ board, won })
